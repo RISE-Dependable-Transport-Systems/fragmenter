@@ -1,0 +1,60 @@
+name: Tests
+
+on:
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - "src/**"
+      - "tests/**"
+      - "pyproject.toml"
+      - "uv.lock"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Deny all permissions by default for security
+permissions: {}
+
+jobs:
+  test:
+    name: Test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # Required to checkout repository code
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12"]
+
+    env:
+      PYTHON_VERSION: ${{ matrix.python-version }}
+
+    steps:
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+        with:
+          persist-credentials: false
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
+        with:
+          version: "latest"
+          enable-cache: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        run: |
+          # Use env variable to avoid template injection
+          uv python install "$PYTHON_VERSION"
+
+      - name: Install dependencies
+        run: |
+          uv sync --all-groups
+
+      - name: Run all tests with coverage
+        run: |
+          uv run pytest tests/ -v \
+            --cov=src/fragmenter \
+            --cov-report=xml \
+            --cov-report=term-missing \
+            --cov-branch

@@ -1,0 +1,10 @@
+[
+    {
+        "user_input": "What is the purpose of the WayWise system?",
+        "reference": "WayWise is a framework designed for dependable transport systems, focusing on safety and reliability in autonomous vehicle operations."
+    },
+    {
+        "user_input": "How does the vehicle server communicate?",
+        "reference": "The vehicle server handles communication between the vehicle and the ground station, managing telemetry and command execution."
+    }
+]

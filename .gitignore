@@ -1,0 +1,99 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# uv
+.uv/
+
+# Testing
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.cover
+.hypothesis/
+.tox/
+.nox/
+coverage.xml
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment files (keep examples)
+*.env
+!*.env.example
+
+# Ruff
+.ruff_cache/
+
+# Mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytype / Pyre
+.pytype/
+.pyre/
+
+# Zizmor
+*.sarif
+
+# Jupyter
+.ipynb_checkpoints
+
+# Vector stores
+**/vector_store/
+**/vector_storage/
+**/chroma_db/
+
+# PyPI
+.pypirc
+
+# GitHub prompts
+prompts/
+
+# Project-specific
+data/*
+vector_store/*
+*.code-workspace
+journal.json
+
+# Example-specific
+examples/waywise/execution_ws/src/*
+examples/waywise/execution_ws/build/*
+vec

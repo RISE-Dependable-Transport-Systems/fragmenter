@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "title": "Compile, build and run RCTruck",
+  "description": "Run steady-state-hypothesis on RCTruck",
+  "configuration": {
+    "experiment_id": {
+      "type": "string",
+      "default": "001"
+    }
+  },
+  "tags": ["baseline", "health-check"],
+  "steady-state-hypothesis": {
+    "title": "RCTruck is running in a healthy state",
+    "probes": [
+      {
+        "type": "probe",
+        "name": "build-and-run-truck",
+        "tolerance": {
+          "type": "regex",
+          "pattern": "(?i)MAVSDK|MavsdkVehicleServer",
+          "target": "stderr"
+        },
+        "provider": {
+          "type": "process",
+          "path": "bash",
+          "arguments": [
+            "-c",
+            "./examples/waywise/experiments/scripts/steady-state-hypothesis.sh ${experiment_id}"
+          ],
+          "timeout": 60
+        }
+      }
+    ]
+  },
+  "method": [
+    {
+      "type": "action",
+      "name": "inject-attack",
+      "provider": {
+        "type": "process",
+        "path": "bash",
+        "arguments": [
+          "-c",
+          "./examples/waywise/experiments/scripts/method.sh ${experiment_id} 001-fix 001-fix-ver"
+        ],
+        "timeout": 60
+      }
+    }
+  ],
+  "rollbacks": [
+    {
+      "type": "action",
+      "name": "cleanup experiment artifacts",
+      "provider": {
+        "type": "process",
+        "path": "bash",
+        "arguments": "./examples/waywise/experiments/scripts/rollback.sh"
+      }
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+[submodule "examples/waywise/data/code/precise-truck"]
+	path = examples/waywise/data/code/precise-truck
+	url = https://github.com/RISE-Dependable-Transport-Systems/precise-truck.git
+[submodule "examples/waywise/experiments/visualization/ControlTower"]
+	path = examples/waywise/experiments/visualization/ControlTower
+	url = git@github.com:RISE-Dependable-Transport-Systems/ControlTower.git
