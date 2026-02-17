@@ -1,6 +1,6 @@
 """fragmenter — Local-first RAG indexer for repos, docs, and PDFs."""
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 # Logging should be configured by applications, not by the library
 # Import the setup function so it's available if needed
