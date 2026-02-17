@@ -1,6 +1,6 @@
 [project]
 name = "fragmenter"
-version = "0.1.0"
+version = "0.1.1"
 description = "Local-first RAG indexer for repos, docs, and PDFs"
 readme = "README.md"
 license = { text = "MIT" }
