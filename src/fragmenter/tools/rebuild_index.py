@@ -75,9 +75,9 @@ def main(
         ),
     ),
     num_workers: int = typer.Option(
-        2,
+        1,
         "--num-workers",
-        help="Number of parallel workers for ingestion pipeline.",
+        help="Number of parallel workers for ingestion pipeline (default: 1 for safety).",
     ),
 ) -> None:
     """Build or update the RAG index with automatic change detection.

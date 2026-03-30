@@ -239,6 +239,18 @@ def build_index(
             logger.warning(f"Failed to load pipeline state: {e}. Starting fresh.")
 
     # Run ingestion pipeline
+    # Detect if we should use multiprocessing
+    # OllamaEmbedding and some others have issues with pickling in workers
+    if num_workers > 1 and Settings.embed_model is not None:
+        embed_name = type(Settings.embed_model).__name__
+        if embed_name == "OllamaEmbedding":
+            logger.warning(
+                f"{embed_name} detected. Disabling multiprocessing to avoid hangs "
+                "caused by non-pickleable attributes (_client/_async_client). "
+                "Falling back to num_workers=1."
+            )
+            num_workers = 1
+
     logger.info(f"Running ingestion pipeline with {num_workers} workers...")
     try:
         processed_nodes = pipeline.run(

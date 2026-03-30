@@ -94,6 +94,8 @@ class RAGSettings(BaseSettings):
                 model=self.LLM_MODEL,
                 base_url=self.OLLAMA_BASE_URL,
                 temperature=self.LLM_TEMPERATURE,
+                request_timeout=self.LLM_TIMEOUT,
+                keep_alive=0,
             )
         elif self.LLM_PROVIDER == "huggingface":
             try:

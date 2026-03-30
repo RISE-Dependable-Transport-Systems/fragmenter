@@ -1,3 +1,4 @@
+import logging
 import sys
 from pathlib import Path
 
@@ -67,3 +68,7 @@ def setup_logging(
     )
 
     logger.info(f"Logging configured. Logs will be saved to {log_file}")
+
+    # Suppress noisy HTTP client logs from httpx/httpcore
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+    logging.getLogger("httpcore").setLevel(logging.WARNING)
