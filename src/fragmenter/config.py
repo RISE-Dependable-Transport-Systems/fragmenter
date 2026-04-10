@@ -110,6 +110,10 @@ class RAGSettings(BaseSettings):
                 model_name=self.LLM_MODEL,
                 token=os.getenv("HUGGINGFACEHUB_API_TOKEN"),
             )
+        else:
+            # Unknown/unsupported provider — disable LLM so LlamaIndex does not
+            # fall back to its built-in OpenAI default and fail on a missing key.
+            LlamaSettings.llm = None
 
         # Configure Embeddings
         if self.EMBED_PROVIDER == "openai":

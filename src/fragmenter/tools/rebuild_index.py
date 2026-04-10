@@ -91,10 +91,18 @@ def main(
     """
     # Load environment variables
     if env_file and env_file.exists():
-        load_dotenv(env_file)
+        load_dotenv(env_file, override=True)
         logger.info(f"Loaded environment from {env_file}")
     else:
-        load_dotenv()
+        # Explicitly load from CWD first so a project-level .env takes priority
+        # over any .env bundled inside the fragmenter package directory.
+        # override=True ensures these values win over anything already in os.environ.
+        cwd_env = Path.cwd() / ".env"
+        if cwd_env.exists():
+            load_dotenv(cwd_env, override=True)
+            logger.info(f"Loaded environment from {cwd_env}")
+        else:
+            load_dotenv(override=True)
 
     # Setup logging with appropriate level
     log_level = "DEBUG" if debug else "INFO"
