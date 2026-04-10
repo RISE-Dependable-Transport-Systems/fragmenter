@@ -13,9 +13,9 @@
 [pypi-badge]: https://img.shields.io/pypi/v/fragmenter
 [pypi]: https://pypi.org/project/fragmenter/
 [python-badge]: https://img.shields.io/pypi/pyversions/fragmenter
-[tests-badge]: https://github.com/RISE-Dependable-Transport-Systems/fragmenter/actions/workflows/test.yaml/badge.svg
-[tests]: https://github.com/RISE-Dependable-Transport-Systems/fragmenter/actions/workflows/test.yaml
-[license-badge]: https://img.shields.io/github/license/RISE-Dependable-Transport-Systems/fragmenter
+[tests-badge]: https://github.com/das-rise/fragmenter/actions/workflows/test.yaml/badge.svg
+[tests]: https://github.com/das-rise/fragmenter/actions/workflows/test.yaml
+[license-badge]: https://img.shields.io/github/license/das-rise/fragmenter
 [license]: ./LICENSE
 [ruff]: https://github.com/astral-sh/ruff
 [ruff-badge]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
@@ -250,12 +250,12 @@ All settings can be configured via environment variables. Create a `.env` file o
 
 ### LLM Providers
 
-| Provider        | Extra          | Configuration                                                              |
-| --------------- | -------------- | -------------------------------------------------------------------------- |
-| **OpenAI**      | `[openai]`     | `LLM_PROVIDER=openai`<br>`LLM_MODEL=gpt-4o-mini`                           |
-| **Anthropic**   | `[anthropic]`  | `LLM_PROVIDER=anthropic`<br>`LLM_MODEL=claude-3-5-sonnet-20241022`         |
-| **Ollama**      | `[ollama]`     | `LLM_PROVIDER=ollama`<br>`LLM_MODEL=llama3.2`                              |
-| **HuggingFace** | `[huggingface]`| `LLM_PROVIDER=huggingface`<br>`LLM_MODEL=meta-llama/Llama-3.2-3B-Instruct` |
+| Provider        | Extra           | Configuration                                                              |
+| --------------- | --------------- | -------------------------------------------------------------------------- |
+| **OpenAI**      | `[openai]`      | `LLM_PROVIDER=openai`<br>`LLM_MODEL=gpt-4o-mini`                           |
+| **Anthropic**   | `[anthropic]`   | `LLM_PROVIDER=anthropic`<br>`LLM_MODEL=claude-3-5-sonnet-20241022`         |
+| **Ollama**      | `[ollama]`      | `LLM_PROVIDER=ollama`<br>`LLM_MODEL=llama3.2`                              |
+| **HuggingFace** | `[huggingface]` | `LLM_PROVIDER=huggingface`<br>`LLM_MODEL=meta-llama/Llama-3.2-3B-Instruct` |
 
 ### Embedding Providers
 
@@ -376,7 +376,7 @@ fragmenter query \
 ```
 
 > [!TIP]
-> See [examples/waywise](https://github.com/RISE-Dependable-Transport-Systems/fragmenter/tree/main/examples/waywise) for a complete real-world example with custom configuration.
+> See [examples/waywise](https://github.com/das-rise/fragmenter/tree/main/examples/waywise) for a complete real-world example with custom configuration.
 
 ---
 
@@ -447,7 +447,7 @@ ollama pull llama3.2
 ### Setup
 
 ```bash
-git clone https://github.com/RISE-Dependable-Transport-Systems/fragmenter.git
+git clone https://github.com/das-rise/fragmenter.git
 cd fragmenter
 uv sync --all-groups
 ```
@@ -468,8 +468,8 @@ just all               # Full pipeline: clean → install → lint → test → 
 
 ## 📖 Examples
 
-- **Complete Real-World Example**: See [examples/waywise](https://github.com/RISE-Dependable-Transport-Systems/fragmenter/tree/main/examples/waywise) for a full setup with custom data, configuration, and evaluation scripts.
-- **Developer Example**: See [examples/dev_examples/main.py](https://github.com/RISE-Dependable-Transport-Systems/fragmenter/blob/main/examples/dev_examples/main.py) for a programmatic usage demonstration of the RAG framework.
+- **Complete Real-World Example**: See [examples/waywise](https://github.com/das-rise/fragmenter/tree/main/examples/waywise) for a full setup with custom data, configuration, and evaluation scripts.
+- **Developer Example**: See [examples/dev_examples/main.py](https://github.com/das-rise/fragmenter/blob/main/examples/dev_examples/main.py) for a programmatic usage demonstration of the RAG framework.
 
 ---
 

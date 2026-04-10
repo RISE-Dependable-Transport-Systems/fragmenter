@@ -61,10 +61,10 @@ all-providers = [
 fragmenter = "fragmenter.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/RISE-Dependable-Transport-Systems/fragmenter"
-Repository = "https://github.com/RISE-Dependable-Transport-Systems/fragmenter"
-Issues = "https://github.com/RISE-Dependable-Transport-Systems/fragmenter/issues"
-Changelog = "https://github.com/RISE-Dependable-Transport-Systems/fragmenter/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/das-rise/fragmenter"
+Repository = "https://github.com/das-rise/fragmenter"
+Issues = "https://github.com/das-rise/fragmenter/issues"
+Changelog = "https://github.com/das-rise/fragmenter/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling>=1.21.0"]
