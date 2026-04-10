@@ -241,12 +241,15 @@ def build_index(
     # Run ingestion pipeline
     # Detect if we should use multiprocessing
     # OllamaEmbedding and some others have issues with pickling in workers
+    # OpenAIEmbedding raises APIStatusError which cannot be unpickled across
+    # process boundaries (missing required keyword args 'response' and 'body')
+    _UNPICKLEABLE_EMBED_MODELS = {"OllamaEmbedding", "OpenAIEmbedding"}
     if num_workers > 1 and Settings.embed_model is not None:
         embed_name = type(Settings.embed_model).__name__
-        if embed_name == "OllamaEmbedding":
+        if embed_name in _UNPICKLEABLE_EMBED_MODELS:
             logger.warning(
-                f"{embed_name} detected. Disabling multiprocessing to avoid hangs "
-                "caused by non-pickleable attributes (_client/_async_client). "
+                f"{embed_name} detected. Disabling multiprocessing to avoid errors "
+                "caused by non-pickleable exceptions/attributes. "
                 "Falling back to num_workers=1."
             )
             num_workers = 1
